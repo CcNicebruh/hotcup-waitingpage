@@ -1,9 +1,54 @@
+
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+
+* {
+  font-family: Kanit;
+}
+
+body {
+  cursor: url('https://aqurusmc.xyz/cur-default.png')0 0, auto !important;
+}
+
+.bg-logo {
+  margin: 10px auto;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* nav {
+  margin: 10px auto;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  width: 500px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 12px;
+  font-size: 18px;
+  padding: 10px;
+}
+
+nav a:hover {
+  color: aqua;
+}
+
+nav .logo {
+  padding-left: 10px;
+} */
+
 footer {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 10px;
-    color: #777;
-    border-top: 1px solid #eaeaea;
-    font-size: 10px;
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 10px;
+  color: #777;
+  border-top: 1px solid #eaeaea;
+  font-size: 10px;
 }
