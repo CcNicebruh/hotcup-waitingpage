@@ -12,26 +12,51 @@
     <link rel="stylesheet" href="/inventories/css/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
-<body>
+<body onload="retrieveToast()">
     <script>
-        function showToast(message, type) {
-          const toastContainer = document.getElementById('toast-container');
-    
-          const toast = document.createElement('div');
-          toast.className = `animate__animated animate__fadeIn ${type === 'error' ? 'bg-red-500' : 'bg-green-500'} text-white font-semibold px-4 py-2 rounded-md shadow-md mb-2`;
-          toast.textContent = message;
-    
-          toastContainer.appendChild(toast);
-    
+      function showToast(message, type) {
+        const toastContainer = document.getElementById('toast-container');
+
+        const toast = document.createElement('div');
+        toast.className = `animate__animated animate__fadeIn ${type === 'error' ? 'bg-red-500' : 'bg-green-500'} text-white font-semibold px-4 py-2 rounded-md shadow-md mb-2`;
+        toast.textContent = message;
+
+        toastContainer.appendChild(toast);
+
+        setTimeout(() => {
+          toast.classList.remove('animate__fadeIn');
+          toast.classList.add('animate__fadeOut');
           setTimeout(() => {
-            toast.classList.remove('animate__fadeIn');
-            toast.classList.add('animate__fadeOut');
-            setTimeout(() => {
-              toast.remove();
-            }, 1000);
-          }, 3000); // Show for 3 seconds
+            toast.remove();
+          }, 1000);
+        }, 3000); // Show for 3 seconds
+      }
+
+      function retrieveToast() {
+        const toastMessage = localStorage.getItem('toastMessage');
+        const toastType = localStorage.getItem('toastType');
+
+        if (toastMessage && toastType) {
+          showToast(toastMessage, toastType);
+          localStorage.removeItem('toastMessage');
+          localStorage.removeItem('toastType');
         }
+      }
     </script>
+    <script>
+      function navigateToSecondPage() {
+        const toastMessage = 'Toast message on second page!';
+        const toastType = 'success';
+    
+        localStorage.setItem('toastMessage', toastMessage);
+        localStorage.setItem('toastType', toastType);
+    
+        window.location.href = 'thanks.html';
+      }
+    </script>
+    <div class="fixed bottom-0 right-0 m-4">
+      <div id="toast-container" class="z-50"></div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
